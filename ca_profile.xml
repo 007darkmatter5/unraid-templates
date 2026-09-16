@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Maintainer>
+  <Profile>
+Self-hosted apps for the home server, by Darkmatter5. Each one is open source, runs as a single container, keeps its data in appdata and supports multiple users with private data per account.
+
+**Ledgerly** - personal finance. Bills with due dates and the account each is paid from, projected running balances, income, credit cards, and loans with full amortization tables.
+
+**MeshVault** - a catalog for a 3D printing model collection. Indexes model folders in place, then adds search, tags, collections, designers, rendered thumbnails and an in-browser 3D preview.
+
+For help or bug reports, open an issue on the GitHub project for the app you are using.
+  </Profile>
+  <Icon>https://avatars.githubusercontent.com/u/2148432?v=4</Icon>
+  <WebPage>https://github.com/007darkmatter5</WebPage>
+</Maintainer>
