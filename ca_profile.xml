@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Maintainer>
   <Profile>
-Self-hosted apps for the home server, by Darkmatter5. Each one is open source, runs as a single container, keeps its data in appdata and supports multiple users with private data per account.
+Self-hosted apps for the home server, by Darkmatter5. Each one runs as a single container and keeps its data in appdata.
 
-**Ledgerly** - personal finance. Bills with due dates and the account each is paid from, projected running balances, income, credit cards, and loans with full amortization tables.
+**Ledgerly** - personal finance. Bills with due dates and the account each is paid from, projected running balances, income, credit cards, and loans with full amortization tables. Open source, multi-user with private data per account.
 
-**MeshVault** - a catalog for a 3D printing model collection. Indexes model folders in place, then adds search, tags, collections, designers, rendered thumbnails and an in-browser 3D preview.
+**MeshVault** - a catalog for a 3D printing model collection. Indexes model folders in place, then adds search, tags, collections, designers, rendered thumbnails and an in-browser 3D preview. Open source, multi-user with private data per account.
+
+**Lansweeper Network Discovery** - an unofficial container for the Lansweeper Hub and IT Sensor, installed from Lansweeper's official Linux packages. Scans your network and reports to your Lansweeper Site. Not affiliated with Lansweeper.
 
 For help or bug reports, open an issue on the GitHub project for the app you are using.
   </Profile>

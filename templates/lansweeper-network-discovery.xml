@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+  <Name>Lansweeper-Network-Discovery</Name>
+  <Repository>ghcr.io/007darkmatter5/lansweeper-network-discovery:latest</Repository>
+  <Registry>https://github.com/007darkmatter5/lansweeper-network-discovery/pkgs/container/lansweeper-network-discovery</Registry>
+  <Branch>
+    <Tag>latest</Tag>
+    <TagDescription>Latest Hub and IT Sensor release from Lansweeper</TagDescription>
+  </Branch>
+  <Network>host</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/007darkmatter5/lansweeper-network-discovery/issues</Support>
+  <Project>https://github.com/007darkmatter5/lansweeper-network-discovery</Project>
+  <ReadMe>https://github.com/007darkmatter5/lansweeper-network-discovery#readme</ReadMe>
+  <TemplateURL>https://raw.githubusercontent.com/007darkmatter5/unraid-templates/main/templates/lansweeper-network-discovery.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/007darkmatter5/lansweeper-network-discovery/main/docs/icon.png</Icon>
+  <WebUI>https://[IP]:[PORT:59525]/</WebUI>
+  <Overview>
+    Unofficial container for Lansweeper Network Discovery. It runs the Hub and the IT Sensor
+    together: the sensor scans your network, and the Hub sends what it finds to your
+    Lansweeper Site. Not affiliated with or supported by Lansweeper.
+
+    The image installs the official Linux packages from Lansweeper's apt repository when it
+    is built, and is rebuilt when Lansweeper releases a new version.
+
+    To link it to your Site, paste the linking code from your Site (Discovery &gt; Discovery
+    systems &gt; Link discovery system) into Linking Code, or link it from the web UI after
+    the first start. The web UI uses a self-signed certificate.
+
+    First start: open https://your-server:59526/ (the Setup Port) and set the admin
+    password. The Hub only allows this from the server itself, so the container relays that
+    port locally until the password is set, then closes it. After that, use the WebUI link.
+
+    Host networking is required for discovery to see your LAN. Keep appdata on cache or an
+    SSD: the Hub uses a SQLite database, and SQLite over a network share is unreliable.
+  </Overview>
+  <Category>Network:Management Tools:</Category>
+  <ExtraSearchTerms>lansweeper asset inventory network discovery scanner itam</ExtraSearchTerms>
+  <ExtraParams>--cap-add=NET_RAW --cap-add=NET_ADMIN --stop-timeout=60</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>A Lansweeper Site (https://app.lansweeper.com). amd64 only.</Requires>
+  <Date>2026-09-24</Date>
+
+  <Config Name="App Data" Target="/config" Default="/mnt/user/appdata/lansweeper-network-discovery" Mode="rw"
+          Description="Hub database, certificate, settings and logs, and the sensor's settings. Put this on cache or an SSD."
+          Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/lansweeper-network-discovery</Config>
+
+  <Config Name="Linking Code" Target="LINKING_CODE" Default="" Mode=""
+          Description="Optional. Linking code from your Lansweeper Site. Applied once; changing it applies the new code. Leave empty to link from the web UI instead."
+          Type="Variable" Display="always" Required="false" Mask="true"/>
+
+  <Config Name="Hub HTTPS Port" Target="HUB_PORT" Default="59525" Mode=""
+          Description="Port for the Hub web UI and the sensor connection. With host networking this is the port on the server."
+          Type="Variable" Display="always" Required="true" Mask="false">59525</Config>
+
+  <Config Name="Setup Port" Target="SETUP_PORT" Default="59526" Mode=""
+          Description="Open https://your-server:59526/ once to set the admin password. The port is only open until the password is set. Set to 0 to disable it."
+          Type="Variable" Display="always" Required="false" Mask="false">59526</Config>
+
+  <Config Name="Passive Only" Target="PASSIVE_ONLY" Default="" Mode=""
+          Description="Leave empty to use active scanning on first start and keep whatever you set in the Hub UI after that. true = listen passively only, false = active scanning."
+          Type="Variable" Display="advanced" Required="false" Mask="false"/>
+
+  <Config Name="Enable IT Sensor" Target="ENABLE_SENSOR" Default="true" Mode=""
+          Description="Run the IT Sensor alongside the Hub. Set to false for a Hub only."
+          Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+
+  <Config Name="Hub Code" Target="HUB_CODE" Default="" Mode=""
+          Description="Optional. Hub code for pairing the sensor, if the Hub UI asks for one."
+          Type="Variable" Display="advanced" Required="false" Mask="true"/>
+
+  <Config Name="Hub Hostname" Target="HUB_HOSTNAME" Default="" Mode=""
+          Description="Optional. Hostname the Hub listens on and advertises. Defaults to the server's hostname."
+          Type="Variable" Display="advanced" Required="false" Mask="false"/>
+
+  <Config Name="Log Level" Target="LOG_LEVEL" Default="Information" Mode=""
+          Description="Verbose, Debug, Information, Warning or Error."
+          Type="Variable" Display="advanced" Required="false" Mask="false">Information</Config>
+
+  <Config Name="Timezone" Target="TZ" Default="Etc/UTC" Mode=""
+          Description="Timezone for log timestamps."
+          Type="Variable" Display="advanced" Required="false" Mask="false">Etc/UTC</Config>
+</Container>
