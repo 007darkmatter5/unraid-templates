@@ -16,12 +16,12 @@
 
 Credit cards are handled as revolving balances: statements, everyday spending, interest and payments (in full, minimum or a fixed amount) are projected forward. Loans get full amortization tables, including extra principal payments. Organize with payees (with links to their websites) and color-coded categories.
 
-Multiple people can use one install, and each user's data is private. Sign-ins support two-factor authentication. The first account you create becomes the admin, who can close sign-ups, set up email for password resets, and download or restore a backup of the whole install. Sample data can be explored and deleted without touching your own.
+Multiple people can use one install, and each user's data is private unless they choose to share it: share your ledger with someone else on the install, view only, and they can switch it on to see it alongside their own, marked in its own color. Sign-ins support two-factor authentication. The first account you create becomes the admin, who can close sign-ups, set up email for password resets, and download or restore a backup of the whole install. Sample data can be explored and deleted without touching your own.
 
 Everything is stored in the appdata folders below. Keep the keys folder with the data folder: it holds the encryption keys for sign-ins and the saved email password. To reach Ledgerly from outside your network, put it behind a reverse proxy with HTTPS and set "Behind a reverse proxy" to true.</Overview>
   <Changes>Release notes: https://github.com/007darkmatter5/ledgerly/releases</Changes>
   <Category>Productivity:</Category>
-  <ExtraSearchTerms>finance budget bills money loans amortization mortgage expenses credit card transactions</ExtraSearchTerms>
+  <ExtraSearchTerms>finance budget bills money loans amortization mortgage expenses credit card transactions shared household</ExtraSearchTerms>
   <License>MIT</License>
   <Screenshot>https://raw.githubusercontent.com/007darkmatter5/ledgerly/main/docs/images/screenshots/dashboard.png</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/007darkmatter5/ledgerly/main/docs/images/screenshots/running-balance.png</Screenshot>
