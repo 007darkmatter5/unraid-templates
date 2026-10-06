@@ -18,12 +18,12 @@ The shopping list writes itself: it always holds what your upcoming meals need p
 
 Add the stores you shop at and record which aisle each item is in at each one. Pick the store on a shopping list and it sorts into walking order. Each item can also carry the exact product you usually buy and a link to its page on the store's website. Store addresses can be looked up through OpenStreetMap; that lookup is the only thing that leaves your server.
 
-Pantrix is behind a username and password, which you create the first time you open it.
+Several people can use one install. Each account has a kitchen of its own that nobody else can see, and a kitchen's owner can share a join code so a partner or housemate works in the same one. The first account you create becomes the admin, who can close sign-ups once everyone has an account.
 
 Everything is stored in the appdata folders below. Keep the keys folder with the data folder: it holds the encryption keys for sign-ins. To reach Pantrix from outside your network, put it behind a reverse proxy with HTTPS and set "Behind a reverse proxy" to true.</Overview>
   <Changes>Release notes: https://github.com/007darkmatter5/pantrix/releases</Changes>
   <Category>Productivity:</Category>
-  <ExtraSearchTerms>recipes meal plan meal planner grocery shopping list pantry inventory kitchen food cooking aisle</ExtraSearchTerms>
+  <ExtraSearchTerms>recipes meal plan meal planner grocery shopping list pantry inventory kitchen food cooking aisle shared household</ExtraSearchTerms>
   <License>MIT</License>
   <Date>2026-10-06</Date>
   <Config Name="Web UI port" Target="8080" Default="5057" Mode="tcp" Description="Port for the Pantrix web interface." Type="Port" Display="always" Required="true" Mask="false">5057</Config>
