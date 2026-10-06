@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+  <Name>Pantrix</Name>
+  <Repository>ghcr.io/007darkmatter5/pantrix:production</Repository>
+  <Registry>https://github.com/007darkmatter5/pantrix/pkgs/container/pantrix</Registry>
+  <Network>bridge</Network>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/007darkmatter5/pantrix/issues</Support>
+  <Project>https://github.com/007darkmatter5/pantrix</Project>
+  <ReadMe>https://github.com/007darkmatter5/pantrix#unraid</ReadMe>
+  <TemplateURL>https://raw.githubusercontent.com/007darkmatter5/unraid-templates/main/templates/pantrix.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/007darkmatter5/pantrix/main/docs/images/icon.png</Icon>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <Overview>Pantrix is a self-hosted kitchen planner. Save recipes and the ingredients they use, keep track of what is in your refrigerator, freezer and pantry, and plan meals on a calendar. A recipe line can accept substitutes ("penne or elbow pasta"), and a planned meal can be a recipe, a single ingredient such as a packaged meal, or eating out.
+
+The shopping list writes itself: it always holds what your upcoming meals need plus anything below the minimum you set, less what you already have. Add your own items, check things off as you shop, and save one-off items as ingredients for next time.
+
+Add the stores you shop at and record which aisle each item is in at each one. Pick the store on a shopping list and it sorts into walking order. Each item can also carry the exact product you usually buy and a link to its page on the store's website. Store addresses can be looked up through OpenStreetMap; that lookup is the only thing that leaves your server.
+
+Pantrix is behind a username and password, which you create the first time you open it.
+
+Everything is stored in the appdata folders below. Keep the keys folder with the data folder: it holds the encryption keys for sign-ins. To reach Pantrix from outside your network, put it behind a reverse proxy with HTTPS and set "Behind a reverse proxy" to true.</Overview>
+  <Changes>Release notes: https://github.com/007darkmatter5/pantrix/releases</Changes>
+  <Category>Productivity:</Category>
+  <ExtraSearchTerms>recipes meal plan meal planner grocery shopping list pantry inventory kitchen food cooking aisle</ExtraSearchTerms>
+  <License>MIT</License>
+  <Date>2026-10-06</Date>
+  <Config Name="Web UI port" Target="8080" Default="5057" Mode="tcp" Description="Port for the Pantrix web interface." Type="Port" Display="always" Required="true" Mask="false">5057</Config>
+  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/pantrix/data" Mode="rw" Description="The database (pantrix.db)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/pantrix/data</Config>
+  <Config Name="Keys" Target="/keys" Default="/mnt/user/appdata/pantrix/keys" Mode="rw" Description="Encryption keys for sign-ins. Back these up with the data." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/pantrix/keys</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Description="User ID Pantrix runs as. It owns the data and keys folders." Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Description="Group ID Pantrix runs as." Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
+  <Config Name="Behind a reverse proxy" Target="ASPNETCORE_FORWARDEDHEADERS_ENABLED" Default="false" Description="Set to true when a reverse proxy (SWAG, Nginx Proxy Manager, Traefik) handles HTTPS in front of Pantrix." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+</Container>
