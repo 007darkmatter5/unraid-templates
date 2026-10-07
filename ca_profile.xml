@@ -9,6 +9,8 @@ Self-hosted apps for the home server, by Darkmatter5. Each one runs as a single 
 
 **Pantrix** - a kitchen planner. Recipes, what is in the fridge and pantry, meal plans, and a shopping list that keeps itself up to date and sorts by aisle for the store you are in. Open source, multi-user with a private kitchen per account that can be shared.
 
+**Pantrix Browser** - an optional companion to Pantrix: a browser container it uses to look aisles up on store websites.
+
 **Lansweeper Network Discovery** - an unofficial container for the Lansweeper Hub and IT Sensor, installed from Lansweeper's official Linux packages. Scans your network and reports to your Lansweeper Site. Not affiliated with Lansweeper.
 
 For help or bug reports, open an issue on the GitHub project for the app you are using.

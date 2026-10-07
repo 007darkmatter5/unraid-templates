@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+  <Name>Pantrix-Browser</Name>
+  <Repository>ghcr.io/007darkmatter5/pantrix-browser:production</Repository>
+  <Registry>https://github.com/007darkmatter5/pantrix/pkgs/container/pantrix-browser</Registry>
+  <Network>bridge</Network>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/007darkmatter5/pantrix/issues</Support>
+  <Project>https://github.com/007darkmatter5/pantrix</Project>
+  <ReadMe>https://github.com/007darkmatter5/pantrix#aisle-lookups-optional</ReadMe>
+  <TemplateURL>https://raw.githubusercontent.com/007darkmatter5/unraid-templates/main/templates/pantrix-browser.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/007darkmatter5/pantrix/main/docs/images/icon.png</Icon>
+  <WebUI>https://[IP]:[PORT:3001]/</WebUI>
+  <ExtraParams>--shm-size=1gb</ExtraParams>
+  <Overview>An optional companion to Pantrix. Install it only if you want Pantrix to look aisles up on store websites for you; Pantrix works without it, with aisles you type in.
+
+It is a Chromium browser (linuxserver's container) with a screen you open from another computer, set up so that Pantrix can drive it. Store websites turn away plain programs, so Pantrix asks this real browser to open a store's search page and reads the aisles off it. It does this only when someone presses "Look up" in Pantrix, one page at a time.
+
+Setup:
+1. In the Unraid terminal, create a network for the two containers: docker network create pantrix
+2. Set Network Type to "pantrix" on this container and on Pantrix. That is how Pantrix reaches the browser's control port (9223), which is deliberately not published to the rest of your network.
+3. Open this container's WebUI (https, accept the self-signed certificate), visit each store's website and choose your store. You can sign in to store accounts there too; the sign-in stays in this browser, and Pantrix never sees the password.
+4. In Pantrix, on the Admin page, enter http://Pantrix-Browser:9223 as the browser address and press Test.
+
+Set the screen username and password below. The screen includes a terminal, and the browser may be signed in to your store accounts, so it should not be open to anyone on your network. If a store site asks for a human check, Pantrix tells you and you complete it here yourself. Automated use may be against a store's terms, and a site can change or block it at any time.</Overview>
+  <Category>Productivity: Tools:</Category>
+  <ExtraSearchTerms>pantrix grocery aisle chromium browser</ExtraSearchTerms>
+  <License>MIT</License>
+  <Requires>Pantrix</Requires>
+  <Date>2026-10-07</Date>
+  <Config Name="Browser screen port (https)" Target="3001" Default="3011" Mode="tcp" Description="Port for the browser's screen. Open it with https." Type="Port" Display="always" Required="true" Mask="false">3011</Config>
+  <Config Name="Browser profile" Target="/config" Default="/mnt/user/appdata/pantrix-browser" Mode="rw" Description="The browser's profile: chosen stores, store sign-ins and settings." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/pantrix-browser</Config>
+  <Config Name="Screen username" Target="CUSTOM_USER" Default="" Description="Username for the browser's screen." Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Screen password" Target="PASSWORD" Default="" Description="Password for the browser's screen." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="PUID" Target="PUID" Default="99" Description="User ID the browser runs as. It owns the profile folder." Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Description="Group ID the browser runs as." Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
+</Container>
