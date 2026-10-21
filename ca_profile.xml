@@ -11,6 +11,8 @@ Self-hosted apps for the home server, by Darkmatter5. Each one runs as a single 
 
 **Pantrix Browser** - an optional companion to Pantrix: a browser container it uses to look aisles up on store websites.
 
+**Linktrace** - cable tracing for network admins. Sites, racks, devices and every port-to-port cable; trace any port end to end through patch panels and wall jacks, and see racks as port maps with every cable drawn. Open source, multi-user with admin, editor and read-only roles.
+
 **Lansweeper Network Discovery** - an unofficial container for the Lansweeper Hub and IT Sensor, installed from Lansweeper's official Linux packages. Scans your network and reports to your Lansweeper Site. Not affiliated with Lansweeper.
 
 For help or bug reports, open an issue on the GitHub project for the app you are using.

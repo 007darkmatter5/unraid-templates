@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+  <Name>Linktrace</Name>
+  <Repository>ghcr.io/007darkmatter5/linktrace:production</Repository>
+  <Registry>https://github.com/007darkmatter5/linktrace/pkgs/container/linktrace</Registry>
+  <Network>bridge</Network>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/007darkmatter5/linktrace/issues</Support>
+  <Project>https://github.com/007darkmatter5/linktrace</Project>
+  <ReadMe>https://github.com/007darkmatter5/linktrace#unraid</ReadMe>
+  <TemplateURL>https://raw.githubusercontent.com/007darkmatter5/unraid-templates/main/templates/linktrace.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/007darkmatter5/linktrace/main/docs/images/icon.png</Icon>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <Overview>Linktrace is self-hosted cable tracing for network admins. Record your sites, rooms and racks, the devices in them (switches, routers, firewalls, patch panels, wall jacks, servers) and every cable between two ports, with its label, type, color and length. Click any port to trace the circuit end to end: through patch panel and wall jack pass-throughs, from the switch port to the desk.
+
+Each device's faceplate is drawn like the real hardware: laid out automatically, or built by hand on a snap-to-grid editor and shared by every device of the same model. Port maps stack devices, or a whole rack, top to bottom and draw every cable between their ports, with labelled stubs for cables that leave the map. Save maps and reopen them later. Generate ports in bulk (48-port switches, 24-port patch panels with front and rear) and duplicate devices with numbered names.
+
+Multiple people can use one install. The first account you register becomes the admin; new accounts can look but not change anything until an admin makes them an Editor. Every change is recorded in a change log. Export everything as one file to back it up or move it to another Linktrace install.
+
+Everything is stored in the appdata folders below. Keep the keys folder with the data folder: it holds the keys for sign-ins. To reach Linktrace from outside your network, put it behind a reverse proxy with HTTPS and WebSockets enabled, and set "Behind a reverse proxy" to true.</Overview>
+  <Changes>Release notes: https://github.com/007darkmatter5/linktrace/releases</Changes>
+  <Category>Network:Management Tools:</Category>
+  <ExtraSearchTerms>network cable cabling trace patch panel switch port rack documentation homelab ipam</ExtraSearchTerms>
+  <License>MIT</License>
+  <Screenshot>https://raw.githubusercontent.com/007darkmatter5/linktrace/main/docs/images/screenshots/port-map.png</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/007darkmatter5/linktrace/main/docs/images/screenshots/faceplates.png</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/007darkmatter5/linktrace/main/docs/images/screenshots/faceplate-editor.png</Screenshot>
+  <Date>2026-10-21</Date>
+  <Config Name="Web UI port" Target="8080" Default="5010" Mode="tcp" Description="Port for the Linktrace web interface." Type="Port" Display="always" Required="true" Mask="false">5010</Config>
+  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/linktrace/data" Mode="rw" Description="The database (linktrace.db)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/linktrace/data</Config>
+  <Config Name="Keys" Target="/keys" Default="/mnt/user/appdata/linktrace/keys" Mode="rw" Description="Keys that sign people's logins. Back these up with the data." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/linktrace/keys</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Description="User ID Linktrace runs as. It owns the data and keys folders." Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Description="Group ID Linktrace runs as." Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
+  <Config Name="Behind a reverse proxy" Target="ASPNETCORE_FORWARDEDHEADERS_ENABLED" Default="false" Description="Set to true when a reverse proxy (SWAG, Nginx Proxy Manager, Traefik) handles HTTPS in front of Linktrace. The proxy must allow WebSockets." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+</Container>
