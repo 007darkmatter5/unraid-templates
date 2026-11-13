@@ -9,9 +9,10 @@ Unraid templates for the apps I maintain. Community Applications reads this repo
 | [Pantrix](https://github.com/007darkmatter5/pantrix) - kitchen planner: recipes, inventory, meal plans, shopping lists by aisle | [`templates/pantrix.xml`](templates/pantrix.xml) | [pantrix](https://github.com/007darkmatter5/pantrix) | [Issues](https://github.com/007darkmatter5/pantrix/issues) |
 | [Pantrix Browser](https://github.com/007darkmatter5/pantrix#aisle-lookups-optional) - optional companion that lets Pantrix look aisles up on store websites | [`templates/pantrix-browser.xml`](templates/pantrix-browser.xml) | [pantrix](https://github.com/007darkmatter5/pantrix) | [Issues](https://github.com/007darkmatter5/pantrix/issues) |
 | [Linktrace](https://github.com/007darkmatter5/linktrace) - cable tracing: racks, devices, port-to-port cables, traces through patch panels, port maps | [`templates/linktrace.xml`](templates/linktrace.xml) | [linktrace](https://github.com/007darkmatter5/linktrace) | [Issues](https://github.com/007darkmatter5/linktrace/issues) |
+| [PlexBridge](https://github.com/007darkmatter5/plexbridge) - syncs watch history, ratings and playlists between two Plex servers | [`templates/plexbridge.xml`](templates/plexbridge.xml) | [plexbridge](https://github.com/007darkmatter5/plexbridge) | [Issues](https://github.com/007darkmatter5/plexbridge/issues) |
 | [Lansweeper Network Discovery](https://github.com/007darkmatter5/lansweeper-network-discovery) - unofficial container for the Lansweeper Hub and IT Sensor | [`templates/lansweeper-network-discovery.xml`](templates/lansweeper-network-discovery.xml) | [lansweeper-network-discovery](https://github.com/007darkmatter5/lansweeper-network-discovery) | [Issues](https://github.com/007darkmatter5/lansweeper-network-discovery/issues) |
 
-Icons and screenshots are served from each app's own repository, so they stay in step with that app.
+Icons and screenshots are served from each app's own repository, so they stay in step with that app. PlexBridge does not publish an icon yet, so its icon is `icons/plexbridge.png` in this repository.
 
 ## Making a change
 
