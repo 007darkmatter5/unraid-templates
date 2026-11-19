@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container version="2">
+  <Name>SyncSentry</Name>
+  <Repository>ghcr.io/007darkmatter5/syncsentry:latest</Repository>
+  <Registry>https://github.com/007darkmatter5/syncsentry/pkgs/container/syncsentry</Registry>
+  <Branch>
+    <Tag>latest</Tag>
+    <TagDescription>Latest build from main</TagDescription>
+  </Branch>
+  <Network>bridge</Network>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/007darkmatter5/syncsentry/issues</Support>
+  <Project>https://github.com/007darkmatter5/syncsentry</Project>
+  <ReadMe>https://github.com/007darkmatter5/syncsentry#readme</ReadMe>
+  <TemplateURL>https://raw.githubusercontent.com/007darkmatter5/unraid-templates/main/templates/syncsentry.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/007darkmatter5/syncsentry/main/docs/images/icon.png</Icon>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <Overview>SyncSentry watches rclone copy and sync jobs, mergerfs pools, and SMB/CIFS mounts on an Unraid server. The web interface shows what is mounted, what a job is transferring, what is still waiting to be copied, and the tail of rclone's logs. It can ask a host script to start a job you already defined, and it can send alerts to a self-hosted ntfy server.
+
+It does not mount or unmount disks, and it does not write to your media. Mount the shares below read-only. A hard CIFS mount can freeze the process that asks it for free space when the network path drops; SyncSentry checks those paths in a short-lived helper and reports the mount unresponsive instead of getting stuck.
+
+The UNAS example in the defaults is a CIFS mount at /mnt/remotes/UNASPRO_Media, reached through a Tailscale subnet route. Tailscale itself stays on the host. See the readme for the one-minute host script that records accept-routes and runs allowlisted jobs.
+
+Not affiliated with rclone, Tailscale, or Unraid.</Overview>
+  <Changes>Release notes: https://github.com/007darkmatter5/syncsentry/releases</Changes>
+  <Category>Tools:Utilities</Category>
+  <ExtraSearchTerms>rclone mergerfs cifs smb ntfy tailscale sync monitor outbox unraid</ExtraSearchTerms>
+  <Screenshot>https://raw.githubusercontent.com/007darkmatter5/syncsentry/main/docs/images/screenshots/mounts.png</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/007darkmatter5/syncsentry/main/docs/images/screenshots/jobs.png</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/007darkmatter5/syncsentry/main/docs/images/screenshots/outbox.png</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/007darkmatter5/syncsentry/main/docs/images/screenshots/logs.png</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/007darkmatter5/syncsentry/main/docs/images/screenshots/settings.png</Screenshot>
+  <Date>2026-11-19</Date>
+  <Config Name="Web UI port" Target="8080" Default="8080" Mode="tcp" Description="Port for the SyncSentry web interface." Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="App Data" Target="/config" Default="/mnt/user/appdata/syncsentry" Mode="rw" Description="Settings, history, data-protection keys, and trigger files. Mounted at /config." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/syncsentry</Config>
+  <Config Name="User shares" Target="/mnt/user" Default="/mnt/user" Mode="ro" Description="Host user shares, read only. In the container path settings, set propagation to rslave so mergerfs mounts show up inside the container. SyncSentry does not write here." Type="Path" Display="always" Required="false" Mask="false" Propagation="rslave">/mnt/user</Config>
+  <Config Name="Remote mounts" Target="/mnt/remotes" Default="/mnt/remotes" Mode="ro" Description="SMB/CIFS and other remote mounts, read only, propagation rslave. Example: /mnt/remotes/UNASPRO_Media. SyncSentry does not mount or unmount these." Type="Path" Display="always" Required="false" Mask="false" Propagation="rslave">/mnt/remotes</Config>
+  <Config Name="rclone logs" Target="/logs/mediamanny" Default="/mnt/cache/appdata/mediamanny/logs" Mode="ro" Description="Folder that contains rclone log files, read only. The seeded log path inside the container is /logs/mediamanny/initial-copy.log." Type="Path" Display="always" Required="false" Mask="false">/mnt/cache/appdata/mediamanny/logs</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Description="User ID SyncSentry runs as. It owns the appdata folder. Unraid's nobody user is 99." Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Description="Group ID SyncSentry runs as. Unraid's users group is 100." Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
+  <Config Name="Timezone" Target="TZ" Default="Etc/UTC" Description="Timezone for dates shown in the interface, for example America/Chicago." Type="Variable" Display="advanced" Required="false" Mask="false">Etc/UTC</Config>
+  <Config Name="rclone RC URL" Target="SyncSentry__Rclone__RcUrl" Default="" Mode="" Description="Optional. URL of rclone rcd on the host, for example http://192.168.1.10:5572. Leave blank to type it in the web UI. If set, this overrides the saved URL on each start. Do not put a password in the URL." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="rclone RC user" Target="SyncSentry__Rclone__RcUser" Default="" Mode="" Description="Optional user for rclone remote control. The password is entered in the web UI so it is not stored in this template." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="ntfy server" Target="SyncSentry__Ntfy__ServerUrl" Default="" Mode="" Description="Optional. Base URL of your ntfy server, for example https://ntfy.example. Leave blank to type it in the web UI. The access token is entered in the web UI and is not stored in this template." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="ntfy topic" Target="SyncSentry__Ntfy__Topic" Default="" Mode="" Description="Optional ntfy topic, letters, numbers, dashes, and underscores." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+</Container>

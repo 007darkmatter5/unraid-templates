@@ -15,6 +15,8 @@ Self-hosted apps for the home server, by Darkmatter5. Each one runs as a single 
 
 **PlexBridge** - syncs watch history, ratings and playlists between two Plex servers. Not affiliated with Plex.
 
+**SyncSentry** - watches rclone copy and sync jobs, mergerfs pools, and SMB/CIFS mounts, and can send alerts to a self-hosted ntfy server. Not affiliated with rclone, Tailscale, or Unraid.
+
 **Lansweeper Network Discovery** - an unofficial container for the Lansweeper Hub and IT Sensor, installed from Lansweeper's official Linux packages. Scans your network and reports to your Lansweeper Site. Not affiliated with Lansweeper.
 
 For help or bug reports, open an issue on the GitHub project for the app you are using.
