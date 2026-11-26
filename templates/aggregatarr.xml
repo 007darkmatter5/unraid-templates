@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>Aggregatarr</Name>
+  <Repository>ghcr.io/007darkmatter5/aggregatarr:latest</Repository>
+  <Registry>https://github.com/007darkmatter5/Aggregatarr/pkgs/container/aggregatarr</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/007darkmatter5/Aggregatarr/issues</Support>
+  <Project>https://github.com/007darkmatter5/Aggregatarr</Project>
+  <Overview>One-pane dashboard for a home media stack: live download queue across qBittorrent and SABnzbd matched to Sonarr, Radarr, and Lidarr, a combined calendar, activity feed, health alerts, and quick actions. API keys stay on the server. The container runs as nobody:users (99:100). qBittorrent and SABnzbd behind gluetun are just their own URLs (gluetun host IP and the app port).</Overview>
+  <Category>MediaApp:Other Downloaders: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/007darkmatter5/unraid-templates/main/templates/aggregatarr.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/007darkmatter5/Aggregatarr/main/assets/icon.png</Icon>
+  <ExtraParams>--user 99:100</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="WebUI" Target="8080" Default="8080" Mode="tcp" Description="Port for the Aggregatarr web interface." Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="AppData" Target="/config" Default="/mnt/user/appdata/aggregatarr" Mode="rw" Description="Database, encrypted credentials, and the ASP.NET Data Protection key ring." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/aggregatarr</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="Unraid convention. The image already runs as uid 99 (nobody). This variable is not read by the app." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Unraid convention. The image already runs as gid 100 (users). This variable is not read by the app." Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
+  <Config Name="TZ" Target="TZ" Default="UTC" Mode="" Description="Timezone for calendar dates." Type="Variable" Display="always" Required="false" Mask="false">UTC</Config>
+</Container>
